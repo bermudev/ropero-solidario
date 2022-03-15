@@ -1,5 +1,5 @@
- /* Split the screen in half */
- .split {
+/* Split the screen in half */
+.split {
   height: 100%;
   width: 50%;
   position: fixed;
@@ -42,9 +42,9 @@
 }
 
 .ancho {
-  width: 100%;
+  width: 300px;
 }
 
 .button {
-  line-height: 50px;
+  height: 50px;
 }
