@@ -1,0 +1,12 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+/* Si queremos cambiar el color de la barra sin tener
+en cuenta el tema de Angular Material
+
+.mat-toolbar {
+  background: teal;
+  color: #fff
+}
+*/ 
