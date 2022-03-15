@@ -15,7 +15,10 @@ const routes: Routes = [
   // este creo que tambien tiene que estar aqui
   {
     path: 'dashboard',
-    loadChildren: () => import("./components/dashboard/dashboard.module").then(x => x.DashboardModule) 
+    loadChildren: () =>
+      import('./components/dashboard/dashboard.module').then(
+        (x) => x.DashboardModule
+      ),
   },
   // el orden es importante, el de ** tiene que estar el ultimo
   {
