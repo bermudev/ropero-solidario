@@ -1,11 +1,11 @@
 <mat-toolbar color="primary">
   <span>Ropero Solidario </span>
   <span class="example-spacer"></span>
-  <button mat-raised-button color="primary">Ropero</button>
-  <button mat-raised-button color="primary">Usuarios</button>
-  <button mat-raised-button color="primary">Configuración</button>
+  <button mat-raised-button color="primary" routerLink="/dashboard/ropero">Ropero</button>
+  <button mat-raised-button color="primary" routerLink="/dashboard/usuarios">Usuarios</button>
+  <button mat-raised-button color="primary" routerLink="/dashboard/configuracion">Configuración</button>
   <span class="example-spacer"></span>
-  <button mat-icon-button class="logout-icon">
+  <button mat-icon-button class="logout-icon" routerLink="/logout">
     <mat-icon>logout</mat-icon>
   </button>
 </mat-toolbar>

@@ -4,15 +4,20 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { CuerpoComponent } from './cuerpo/cuerpo.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RoperoComponent } from './ropero/ropero.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    CuerpoComponent,
-    NavbarComponent
+    RoperoComponent,
+    NavbarComponent,
+    RoperoComponent,
+    UsuariosComponent,
+    ConfiguracionComponent
   ],
   imports: [
     CommonModule,
