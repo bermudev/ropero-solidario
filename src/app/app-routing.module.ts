@@ -4,11 +4,6 @@ import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {
-    path: '**',
-    redirectTo: 'login',
-    pathMatch: 'full',
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full',
@@ -17,9 +12,16 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
+  // este creo que tambien tiene que estar aqui
   {
     path: 'dashboard',
-    loadChildren: () => import("src/app/components/dashboard/dashboard.module").then(x => x.DashboardModule) 
+    loadChildren: () => import("./components/dashboard/dashboard.module").then(x => x.DashboardModule) 
+  },
+  // el orden es importante, el de ** tiene que estar el ultimo
+  {
+    path: '**',
+    redirectTo: 'login',
+    pathMatch: 'full',
   },
 ];
 
