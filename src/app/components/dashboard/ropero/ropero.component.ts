@@ -7,43 +7,37 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export interface UserData {
   id: string;
-  name: string;
-  progress: string;
-  fruit: string;
+  nombre: string;
+  cantidad: string;
+  categoria: string;
 }
 
 
 /** Constants used to fill up our data base. */
 const FRUITS: string[] = [
-  'blueberry',
-  'lychee',
-  'kiwi',
-  'mango',
-  'peach',
-  'lime',
-  'pomegranate',
-  'pineapple',
+  'Primavera',
+  'Verano',
+  'Otoño',
+  'Invierno',
 ];
 const NAMES: string[] = [
-  'Maia',
-  'Asher',
-  'Olivia',
-  'Atticus',
-  'Amelia',
-  'Jack',
-  'Charlotte',
-  'Theodore',
-  'Isla',
-  'Oliver',
-  'Isabella',
-  'Jasper',
-  'Cora',
-  'Levi',
-  'Violet',
-  'Arthur',
-  'Mia',
-  'Thomas',
-  'Elizabeth',
+  'Camiseta',
+  'Pantalón',
+  'Abrigo',
+  'Blusa',
+  'Botas',
+  'Calcetines',
+  'Camisa',
+  'Cazadora',
+  'Chaqueta',
+  'Zapatos',
+  'Falda',
+  'Jersey',
+  'Pantalón corto',
+  'Traje',
+  'Vestido',
+  'Corbata',
+  'Sombrero',
 ];
 
 
@@ -54,7 +48,7 @@ const NAMES: string[] = [
 })
 
 export class RoperoComponent implements AfterViewInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'fruit', "acciones"];
+  displayedColumns: string[] = ['id', 'nombre', 'categoria', 'cantidad', "acciones"];
   dataSource: MatTableDataSource<UserData>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -86,15 +80,12 @@ export class RoperoComponent implements AfterViewInit {
 /** Builds and returns a new User. */
 function createNewUser(id: number): UserData {
   const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] +
-    ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) +
-    '.';
+    NAMES[Math.round(Math.random() * (NAMES.length - 1))];
 
   return {
     id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    fruit: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
+    nombre: name,
+    cantidad: Math.round(Math.random() * 10).toString(),
+    categoria: FRUITS[Math.round(Math.random() * (FRUITS.length - 1))],
   };
 }
