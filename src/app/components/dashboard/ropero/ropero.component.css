@@ -2,3 +2,31 @@ table {
   width: 100%;
   margin-top: 10px;
 }
+
+mat-paginator {
+margin-bottom: 10px;
+}
+
+.filtro {
+  width: 100%;
+}
+
+.mat-toolbar-single-row {
+  height: 48px;
+}
+
+th {
+  width: 25%;
+}
+
+.id {
+  width: 5px;
+}
+
+.botones {
+  width: 5px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
