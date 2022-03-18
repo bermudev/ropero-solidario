@@ -15,18 +15,6 @@ tr.mat-row:hover {
   width: 100%;
 }
 
-th {
-  width: 25%;
-}
-
-.id {
-  width: 5px;
-}
-
-.botones {
-  width: 5px;
-}
-
 .example-spacer {
   flex: 1 1 auto;
 }
