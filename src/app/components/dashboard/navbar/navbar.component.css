@@ -2,6 +2,10 @@
   flex: 1 1 auto;
 }
 
+.mat-raised-button {
+  margin: 5px;
+}
+
 /* Si queremos cambiar el color de la barra sin tener
 en cuenta el tema de Angular Material
 
