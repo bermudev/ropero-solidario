@@ -18,13 +18,3 @@ tr.mat-row:hover {
 .example-spacer {
   flex: 1 1 auto;
 }
-
-@media only screen and (max-width: 600px) {
-  .container {
-    margin: auto;
-  }
-  
-  .filtro {
-    margin-left: 5%;
-  }
-}
