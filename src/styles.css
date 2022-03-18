@@ -21,3 +21,12 @@ body {
   background-color: #bb86fc;
 }
 
+@media only screen and (max-width: 600px) {
+  .container {
+    margin: auto;
+  }
+
+  .filtro {
+    margin-left: 5%;
+  }
+}
