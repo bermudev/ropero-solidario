@@ -44,3 +44,9 @@
 .button {
   height: 50px;
 }
+
+@media only screen and (max-width: 600px) {
+  .split{
+    width: 100%;
+  }
+}
