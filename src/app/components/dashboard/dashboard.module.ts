@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RoperoComponent } from './ropero/ropero.component';
-import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 
 
@@ -16,7 +15,6 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
     RoperoComponent,
     NavbarComponent,
     RoperoComponent,
-    UsuariosComponent,
     ConfiguracionComponent
   ],
   imports: [
