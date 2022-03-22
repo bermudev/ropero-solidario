@@ -48,4 +48,11 @@ export class RoperoComponent implements AfterViewInit {
   ngOnInit(): void {
     this.cargarItems();
   }
+
+  // funcion para eliminar un usuario usando el boton de papelera
+  eliminarUsuario(index: number) {
+    this._itemsService.eliminarItem(index);
+    this.cargarItems()
+    this.dataSource.paginator = this.paginator;
+  }
 }
