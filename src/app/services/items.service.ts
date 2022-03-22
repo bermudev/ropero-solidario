@@ -30,7 +30,20 @@ export class ItemsService {
 
   constructor() {}
 
+  // devolvemos en los otros ts el elemento con los datos
   getItems() {
     return this.ELEMENT_DATA.slice();
+  }
+
+  // eliminamos el item con splice que elimina por posicion, habria que cambiar para que elimine segun el id que se le pase
+  // buscar el indice segun el id enviado y eliminar ese indice?
+  // https://bobbyhadz.com/blog/javascript-remove-object-from-array-by-value
+  eliminarItem(index: number){
+    const indexOfObject = this.ELEMENT_DATA.findIndex(object => {
+      return object.position === index;
+    })
+
+    //aqui realmente se haría el query http
+    this.ELEMENT_DATA.splice(indexOfObject, 1)
   }
 }
