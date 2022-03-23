@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ItemsService } from 'src/app/services/items.service';
-import { SharedModule } from '../../shared/shared.module';
+import {
+  ConfirmBoxInitializer,
+  DialogLayoutDisplay,
+} from '@costlydeveloper/ngx-awesome-popup';
 
 export interface PeriodicElement {
   name: string;
@@ -38,7 +40,7 @@ export class RoperoComponent implements AfterViewInit {
   }
 
   // inyectamos el servicio
-  constructor(private _itemsService: ItemsService, public dialog: MatDialog) {}
+  constructor(private _itemsService: ItemsService) {}
 
   //creamos una funcion para cargar los datos desde el servicio
   cargarItems() {
@@ -54,21 +56,31 @@ export class RoperoComponent implements AfterViewInit {
   // funcion para eliminar un usuario usando el boton de papelera
   eliminarUsuario(index: number) {
     this._itemsService.eliminarItem(index);
-    this.cargarItems()
+    this.cargarItems();
     this.dataSource.paginator = this.paginator;
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+  confirmBox() {
+    const confirmBox = new ConfirmBoxInitializer();
+    confirmBox.setTitle('Are you sure?');
+    confirmBox.setMessage('Confirm to delete user: John Doe!');
+    // Set button labels, the first argument for the confirmation button, and the second one for the decline button.
+    confirmBox.setButtonLabels('YES', 'NO');
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    confirmBox.setConfig({
+      disableIcon: true, // optional
+      allowHtmlMessage: false, // optional
+      buttonPosition: 'center', // optional
+      // Evoke the confirmation box with predefined types.
+      layoutType: DialogLayoutDisplay.DANGER, // SUCCESS | INFO | NONE | DANGER | WARNING
+    });
+
+    // Simply evoke the popup and listen which button is clicked.
+    const subscription = confirmBox.openConfirmBox$().subscribe((resp) => {
+      // IConfirmBoxPublicResponse
+      console.log('ConfirmBox button response: ', resp);
+      console.log(resp.success);
+      subscription.unsubscribe();
     });
   }
 }
-
-@Component({
-  selector: 'app-ropero-dialog',
-  templateUrl: './ropero-dialog.html',
-})
-export class DialogContentExampleDialog {}
