@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ItemsService } from 'src/app/services/items.service';
@@ -36,7 +37,7 @@ export class RoperoComponent implements AfterViewInit {
   }
 
   // inyectamos el servicio
-  constructor(private _itemsService: ItemsService) {}
+  constructor(private _itemsService: ItemsService, public dialog: MatDialog) {}
 
   //creamos una funcion para cargar los datos desde el servicio
   cargarItems() {
@@ -55,4 +56,18 @@ export class RoperoComponent implements AfterViewInit {
     this.cargarItems()
     this.dataSource.paginator = this.paginator;
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  template: '<h1>dialog-content-example-dialog.html</h1>',
+})
+export class DialogContentExampleDialog {}
