@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ItemsService } from 'src/app/services/items.service';
+import { SharedModule } from '../../shared/shared.module';
 
 export interface PeriodicElement {
   name: string;
@@ -67,7 +68,7 @@ export class RoperoComponent implements AfterViewInit {
 }
 
 @Component({
-  selector: 'dialog-content-example-dialog',
-  template: '<h1>dialog-content-example-dialog.html</h1>',
+  selector: 'app-ropero-dialog',
+  templateUrl: './ropero-dialog.html',
 })
 export class DialogContentExampleDialog {}
