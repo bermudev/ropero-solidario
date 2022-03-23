@@ -15,7 +15,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
     RoperoComponent,
     NavbarComponent,
     RoperoComponent,
-    ConfiguracionComponent
+    ConfiguracionComponent,
   ],
   imports: [
     CommonModule,

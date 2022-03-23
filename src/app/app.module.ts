@@ -7,6 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './components/shared/shared.module';
 
+import {
+  ConfirmBoxConfigModule,
+  NgxAwesomePopupModule,
+} from '@costlydeveloper/ngx-awesome-popup';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -14,7 +18,9 @@ import { SharedModule } from './components/shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    NgxAwesomePopupModule.forRoot(),
+    ConfirmBoxConfigModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
