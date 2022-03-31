@@ -60,12 +60,12 @@ export class RoperoComponent implements AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  confirmBox() {
+  confirmBox(index: number) {
     const confirmBox = new ConfirmBoxInitializer();
-    confirmBox.setTitle('Are you sure?');
+    confirmBox.setTitle('¿Estás seguro?');
     confirmBox.setMessage('Confirm to delete user: John Doe!');
     // Set button labels, the first argument for the confirmation button, and the second one for the decline button.
-    confirmBox.setButtonLabels('YES', 'NO');
+    confirmBox.setButtonLabels('Borrar', 'Cancelar');
 
     confirmBox.setConfig({
       disableIcon: true, // optional
@@ -78,8 +78,9 @@ export class RoperoComponent implements AfterViewInit {
     // Simply evoke the popup and listen which button is clicked.
     const subscription = confirmBox.openConfirmBox$().subscribe((resp) => {
       // IConfirmBoxPublicResponse
-      console.log('ConfirmBox button response: ', resp);
-      console.log(resp.success);
+      if(resp.success) {
+        this.eliminarUsuario(index)
+      }
       subscription.unsubscribe();
     });
   }
