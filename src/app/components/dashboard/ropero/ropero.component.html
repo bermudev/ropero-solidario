@@ -2,7 +2,7 @@
   <mat-toolbar class="second-row">
     <span>Ropero</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary">Añadir</button>
+    <button mat-raised-button color="primary" routerLink="/dashboard/additem">Añadir</button>
   </mat-toolbar>
 
   <mat-form-field appearance="standard" class="filtro">
@@ -44,7 +44,7 @@
           <mat-icon>more_horiz</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="confirmBox()">
+          <button mat-menu-item (click)="confirmBox(element.position)">
             <mat-icon>edit</mat-icon>
             <span>Editar</span>
           </button>

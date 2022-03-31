@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RoperoComponent } from './ropero/ropero.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
+import { AddItemComponent } from './add-item/add-item.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
     NavbarComponent,
     RoperoComponent,
     ConfiguracionComponent,
+    AddItemComponent,
   ],
   imports: [
     CommonModule,
