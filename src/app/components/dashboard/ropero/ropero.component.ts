@@ -8,10 +8,10 @@ import {
 } from '@costlydeveloper/ngx-awesome-popup';
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  acciones: string;
+  id: number;
+  nombre: string;
+  categoria: string;
+  cantidad: number;
 }
 
 @Component({
@@ -23,7 +23,7 @@ export class RoperoComponent implements AfterViewInit {
   // creamos una variable de elementos vacía
   ELEMENT_DATA: PeriodicElement[] = [];
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'acciones'];
+  displayedColumns: string[] = ['id', 'nombre', 'categoria', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
