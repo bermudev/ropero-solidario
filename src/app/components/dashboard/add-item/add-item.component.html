@@ -6,43 +6,27 @@
   <mat-card class="centered">
     <mat-card-title>Introduce el objeto</mat-card-title>
     <br />
-    <form class="example-form">
-      <mat-form-field
-        class="example-full-width"
-        appearance="fill"
-        style="width: 300px"
-      >
+    <form class="example-form" [formGroup]="form" (ngSubmit)="agregarItem()">
+      <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
         <mat-label>Nombre</mat-label>
-        <input matInput />
+        <input matInput formControlName="nombre">
       </mat-form-field>
 
       <p>
-        <mat-form-field
-          class="example-full-width"
-          appearance="fill"
-          style="width: 300px"
-        >
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
           <mat-label>Categoría</mat-label>
-          <input matInput />
+          <input matInput formControlName="categoria">
         </mat-form-field>
       </p>
       <p>
-        <mat-form-field
-          class="example-full-width"
-          appearance="fill"
-          style="width: 300px"
-        >
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
           <mat-label>Cantidad</mat-label>
-          <input matInput type="number" />
+          <input matInput type="number" formControlName="cantidad" />
         </mat-form-field>
       </p>
       <mat-card-actions>
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          style="width: 300px; height: 50px"
-        >
+        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary"
+          style="width: 300px; height: 50px">
           Añadir
         </button>
       </mat-card-actions>
