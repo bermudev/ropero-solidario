@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [],
@@ -35,6 +36,7 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatDialogModule,
     MatCardModule,
+    MatListModule,
   ],
   exports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { MatCardModule } from '@angular/material/card';
     MatMenuModule,
     MatDialogModule,
     MatCardModule,
+    MatListModule,
   ],
 })
 export class SharedModule {}

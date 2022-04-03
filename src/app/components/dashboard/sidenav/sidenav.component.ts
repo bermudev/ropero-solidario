@@ -2,14 +2,14 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-sidenav',
+  templateUrl: './sidenav.component.html',
+  styleUrls: ['./sidenav.component.css']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class SidenavComponent implements OnDestroy {
 
   mobileQuery: MediaQueryList;
-  fillerNav = Array.from({length: 10}, (_, i) => `Nav Item ${i + 1}`);
+  fillerNav = Array.from({length: 50}, (_, i) => `Nav Item ${i + 1}`);
 
   private _mobileQueryListener: () => void;
 
@@ -21,9 +21,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
-
-  ngOnInit(): void {
   }
 
 }
