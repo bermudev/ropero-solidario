@@ -1,7 +1,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fixedInViewport>
   <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" (click)="snav.toggle()">
-      <mat-icon routerLink="/dashboard/ropero">home</mat-icon>
+      <mat-icon routerLink="/dashboard/ropero">menu</mat-icon>
     </button>
     <span class="example-spacer"></span>
     <span>Ropero Solidario </span>
@@ -26,13 +26,16 @@
 
 
   <mat-sidenav-container class="example-sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true" fixedTopGap="64">
-      <mat-nav-list>
-        <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true" fixedTopGap="56">
+      <mat-nav-list (click)="snav.toggle()">
+        <a mat-list-item routerLink="/dashboard/ropero"><span class="material-icons list-icons">checkroom</span>Ropero</a>
+        <a mat-list-item routerLink="/dashboard/additem"><span class="material-icons list-icons">add</span>Agregar</a>
+        <a mat-list-item routerLink="."><span class="material-icons list-icons">delete</span>Papelera</a>
+        <a mat-list-item routerLink="/dashboard/configuracion"><span class="material-icons list-icons">settings</span>Configuración</a>
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content style="height: 100vh;">
+    <mat-sidenav-content>
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
