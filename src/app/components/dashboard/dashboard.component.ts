@@ -9,7 +9,6 @@ import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit, OnDestroy {
 
   mobileQuery: MediaQueryList;
-  fillerNav = Array.from({length: 10}, (_, i) => `Nav Item ${i + 1}`);
 
   private _mobileQueryListener: () => void;
 
