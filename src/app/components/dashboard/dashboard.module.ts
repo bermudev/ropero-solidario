@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { SharedModule } from '../shared/shared.module';
-import { NavbarComponent } from './navbar/navbar.component';
 import { RoperoComponent } from './ropero/ropero.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { AddItemComponent } from './add-item/add-item.component';
@@ -15,7 +14,6 @@ import { SidenavComponent } from './sidenav/sidenav.component';
   declarations: [
     DashboardComponent,
     RoperoComponent,
-    NavbarComponent,
     RoperoComponent,
     ConfiguracionComponent,
     AddItemComponent,
