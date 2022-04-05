@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { PeriodicElement } from '../components/dashboard/ropero/ropero.component';
+import { ObjectsList } from '../components/dashboard/ropero/ropero.component';
 import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  ELEMENT_DATA: PeriodicElement[] = [
+  ELEMENT_DATA: ObjectsList[] = [
     { id: 1, nombre: 'Chaleco', categoria: 'Invierno', cantidad: 2 },
     { id: 2, nombre: 'Pantalón', categoria: 'Primavera', cantidad: 4 },
     { id: 3, nombre: 'Camiseta', categoria: 'Verano', cantidad: 6 },
