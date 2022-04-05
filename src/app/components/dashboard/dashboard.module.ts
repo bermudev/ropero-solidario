@@ -8,6 +8,7 @@ import { RoperoComponent } from './ropero/ropero.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { DialogComponent } from './ropero/dialog/dialog.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     ConfiguracionComponent,
     AddItemComponent,
     SidenavComponent,
+    DialogComponent,
   ],
   imports: [
     CommonModule,
