@@ -5,7 +5,7 @@ import { ItemsService } from 'src/app/services/items.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 
-export interface PeriodicElement {
+export interface ObjectsList {
   id: number;
   nombre: string;
   categoria: string;
@@ -19,7 +19,7 @@ export interface PeriodicElement {
 })
 export class RoperoComponent implements AfterViewInit {
   // creamos una variable de elementos vacía
-  ELEMENT_DATA: PeriodicElement[] = [];
+  ELEMENT_DATA: ObjectsList[] = [];
 
   displayedColumns: string[] = ['id', 'nombre', 'categoria', 'acciones'];
   dataSource!: MatTableDataSource<any>;
