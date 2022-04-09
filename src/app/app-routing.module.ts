@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from "./shared/auth.guard";
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       import('./components/dashboard/dashboard.module').then(
         (x) => x.DashboardModule
       ),
+    canActivate: [AuthGuard]
   },
   // el orden es importante, el de ** tiene que estar el ultimo
   {

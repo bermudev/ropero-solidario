@@ -6,11 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './components/shared/shared.module';
-
-import {
-  ConfirmBoxConfigModule,
-  NgxAwesomePopupModule,
-} from '@costlydeveloper/ngx-awesome-popup';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/authconfig.interceptor';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -19,10 +16,13 @@ import {
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    NgxAwesomePopupModule.forRoot(),
-    ConfirmBoxConfigModule.forRoot(),
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
