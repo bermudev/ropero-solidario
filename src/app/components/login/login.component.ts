@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,24 +14,18 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    public authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
-      usuario: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
   }
 
   ingresar() {
-    const usuario = this.form.value.usuario;
-    const password = this.form.value.password;
-
-    if (usuario == 'admin' && password == 'admin123') {
-      this.router.navigate(['dashboard']);
-    } else {
-      this.showError();
-    }
+    this.authService.signIn(this.form.value);
   }
 
   showError() {
