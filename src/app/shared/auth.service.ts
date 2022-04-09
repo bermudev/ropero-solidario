@@ -29,10 +29,8 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        this.getUserProfile(res._id).subscribe((res) => {
-          this.currentUser = res;
-          this.router.navigate(['/' + res.msg._id]);
-        });
+        
+        this.router.navigate(['dashboard']);
       });
   }
 
@@ -48,19 +46,8 @@ export class AuthService {
   doLogout() {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['log-in']);
+      this.router.navigate(['login']);
     }
-  }
-
-  // User profile
-  getUserProfile(id: any): Observable<any> {
-    let api = `${this.endpoint}/user-profile/${id}`;
-    return this.http.get(api, { headers: this.headers }).pipe(
-      map((res) => {
-        return res || {};
-      }),
-      catchError(this.handleError)
-    );
   }
 
   // Error
