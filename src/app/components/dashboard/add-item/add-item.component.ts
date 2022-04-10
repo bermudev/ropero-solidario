@@ -37,13 +37,13 @@ export class AddItemComponent implements OnInit {
   ngOnInit(): void {
     if (this.idItem !== undefined) {
       this.action = 'Editar';
-      this.esEditar();
+      this.checkEdit();
     }
   }
 
-  agregarItem() {
+  actOnItem() {
     const item: Item = {
-      id: 0,
+      id: this.idItem,
       nombre: this.form.value.nombre,
       categoria: this.form.value.categoria,
       cantidad: this.form.value.cantidad,
@@ -73,9 +73,8 @@ export class AddItemComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
-  esEditar() {
+  checkEdit() {
     const item: Item = this._itemService.getSingleItem(this.idItem);
-    console.log(item);
     this.form.patchValue({
       nombre: item.nombre,
       categoria: item.categoria,
