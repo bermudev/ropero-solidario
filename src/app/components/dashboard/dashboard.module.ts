@@ -9,6 +9,9 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import { AddItemComponent } from './add-item/add-item.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { DialogComponent } from './ropero/dialog/dialog.component';
+import { PapeleraComponent } from './papelera/papelera.component';
+import { EditarComponent } from './ropero/editar/editar.component';
+import { CategoriasComponent } from './categorias/categorias.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { DialogComponent } from './ropero/dialog/dialog.component';
     AddItemComponent,
     SidenavComponent,
     DialogComponent,
+    PapeleraComponent,
+    EditarComponent,
+    CategoriasComponent,
   ],
   imports: [
     CommonModule,
