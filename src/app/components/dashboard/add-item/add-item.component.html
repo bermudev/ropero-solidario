@@ -6,7 +6,7 @@
   <mat-card class="centered">
     <mat-card-title>Introduce el objeto a {{ action | lowercase }}</mat-card-title>
     <br />
-    <form class="example-form" [formGroup]="form" (ngSubmit)="agregarItem()">
+    <form class="example-form" [formGroup]="form" (ngSubmit)="actOnItem()">
       <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
         <mat-label>Nombre</mat-label>
         <input matInput formControlName="nombre">

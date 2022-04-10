@@ -30,7 +30,9 @@ export class ItemsService {
 
     //aqui realmente se haría el query http
     this.ELEMENT_DATA.splice(indexOfObject, 1);
-    this.showSnack();
+    this._snackBar.open('Objeto eliminado correctamente', '', {
+      duration: 5000,
+    });
   }
 
   agregarItem(item: Item) {
@@ -46,13 +48,5 @@ export class ItemsService {
     this.ELEMENT_DATA[idItem].nombre = item.nombre;
     this.ELEMENT_DATA[idItem].categoria = item.categoria;
     this.ELEMENT_DATA[idItem].cantidad = item.cantidad;
-  }
-
-  showSnack() {
-    this._snackBar.open('Objeto eliminado correctamente', '', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
   }
 }
