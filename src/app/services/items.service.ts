@@ -8,9 +8,9 @@ import { Item } from '../interfaces/item';
 })
 export class ItemsService {
   ELEMENT_DATA: ObjectsList[] = [
-    { id: 1, nombre: 'Chaleco', categoria: 'Invierno', cantidad: 2 },
-    { id: 2, nombre: 'Pantalón', categoria: 'Primavera', cantidad: 4 },
-    { id: 3, nombre: 'Camiseta', categoria: 'Verano', cantidad: 6 },
+    { id: 0, nombre: 'Chaleco', categoria: 'Invierno', cantidad: 2 },
+    { id: 1, nombre: 'Pantalón', categoria: 'Primavera', cantidad: 4 },
+    { id: 2, nombre: 'Camiseta', categoria: 'Verano', cantidad: 6 },
   ];
 
   constructor(private _snackBar: MatSnackBar) {}
@@ -30,13 +30,22 @@ export class ItemsService {
 
     //aqui realmente se haría el query http
     this.ELEMENT_DATA.splice(indexOfObject, 1);
-    this.showSnack()
-    
+    this.showSnack();
   }
 
   agregarItem(item: Item) {
     item.id = this.ELEMENT_DATA.length + 1;
     this.ELEMENT_DATA.unshift(item);
+  }
+
+  getSingleItem(index: number) {
+    return this.ELEMENT_DATA[index];
+  }
+
+  editarItem(item: Item, idItem: number) {
+    this.ELEMENT_DATA[idItem].nombre = item.nombre;
+    this.ELEMENT_DATA[idItem].categoria = item.categoria;
+    this.ELEMENT_DATA[idItem].cantidad = item.cantidad;
   }
 
   showSnack() {

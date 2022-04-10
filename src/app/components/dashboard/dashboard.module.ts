@@ -9,7 +9,6 @@ import { ConfiguracionComponent } from './configuracion/configuracion.component'
 import { AddItemComponent } from './add-item/add-item.component';
 import { DialogComponent } from './ropero/dialog/dialog.component';
 import { PapeleraComponent } from './papelera/papelera.component';
-import { EditarComponent } from './ropero/editar/editar.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 
 
@@ -22,7 +21,6 @@ import { CategoriasComponent } from './categorias/categorias.component';
     AddItemComponent,
     DialogComponent,
     PapeleraComponent,
-    EditarComponent,
     CategoriasComponent,
   ],
   imports: [
