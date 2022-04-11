@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptor } from './shared/authconfig.interceptor';
+import { AuthInterceptor } from './interceptors/authconfig.interceptor';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
