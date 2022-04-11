@@ -19,14 +19,34 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
 
+  isMobile = false;
+  getIsMobile(): boolean {
+    const w = document.documentElement.clientWidth;
+    const breakpoint = 991;
+
+    if (w < breakpoint) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
   ngOnInit(): void {
+    this.isMobile = this.getIsMobile();
+    window.onresize = () => {
+      this.isMobile = this.getIsMobile();
+    };
   }
 
   logout() {
     this.authService.doLogout();
+  }
+
+  clicked(){
+    
   }
 }

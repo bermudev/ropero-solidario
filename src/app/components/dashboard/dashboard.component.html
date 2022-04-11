@@ -1,7 +1,7 @@
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" fixedInViewport>
   <mat-toolbar color="primary">
     <button mat-icon-button class="example-icon" (click)="snav.toggle()">
-      <mat-icon routerLink="/dashboard/ropero">menu</mat-icon>
+      <mat-icon>menu</mat-icon>
     </button>
     <span class="example-spacer"></span>
     <span>Ropero Solidario </span>
@@ -15,7 +15,7 @@
 
   <mat-sidenav-container class="example-sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="true" fixedTopGap="56">
-      <mat-nav-list (click)="snav.toggle()">
+      <mat-nav-list (click)="isMobile && snav.toggle()">
         <a mat-list-item routerLink="/dashboard/ropero"><span class="material-icons list-icons">checkroom</span>Ropero</a>
         <a mat-list-item routerLink="/dashboard/additem"><span class="material-icons list-icons">add</span>Agregar</a>
         <a mat-list-item routerLink="/dashboard/pedidos"><span class="material-icons list-icons">group</span>Pedidos</a>

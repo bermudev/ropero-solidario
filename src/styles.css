@@ -18,7 +18,19 @@ body {
 .second-row {
   height: 48px;
   color: white;
-  background-color: #bb86fc;
+  background-color: #e8b5a9;
+}
+
+.mat-toolbar {
+  background-color: #ff8790;
+}
+
+.mat-toolbar.mat-primary {
+  background-color: #bc353e;
+}
+
+.mat-raised-button.mat-primary {
+  background-color: #e94b56;
 }
 
 @media only screen and (max-width: 600px) {
