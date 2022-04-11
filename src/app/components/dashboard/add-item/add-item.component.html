@@ -3,33 +3,40 @@
     <span>{{ action }} objeto</span>
   </mat-toolbar>
 
-  <mat-card class="centered">
-    <mat-card-title>Introduce el objeto a {{ action | lowercase }}</mat-card-title>
-    <br />
-    <form class="example-form" [formGroup]="form" (ngSubmit)="actOnItem()">
-      <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
-        <mat-label>Nombre</mat-label>
-        <input matInput formControlName="nombre">
-      </mat-form-field>
+  <mat-card class="carta">
+    <div class="contenido">
+      <mat-card-title>Introduce el objeto</mat-card-title>
+      <br />
+      <form class="example-form" [formGroup]="form" (ngSubmit)="actOnItem()">
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre">
+        </mat-form-field>
 
-      <p>
-        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
-          <mat-label>Categoría</mat-label>
-          <input matInput formControlName="categoria">
-        </mat-form-field>
-      </p>
-      <p>
-        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
-          <mat-label>Cantidad</mat-label>
-          <input matInput type="number" formControlName="cantidad" />
-        </mat-form-field>
-      </p>
-      <mat-card-actions>
-        <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary"
-          style="width: 300px; height: 50px">
-          {{action}}
-        </button>
-      </mat-card-actions>
-    </form>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+            <mat-label>Categoría</mat-label>
+            <input matInput formControlName="categoria">
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" formControlName="cantidad" />
+          </mat-form-field>
+        </p>
+        <mat-card-actions>
+          <div class="botones">
+            <button type="submit" [disabled]="form.invalid" mat-raised-button color="primary"
+              style="width: 120px; height: 50px">
+              {{action}}
+            </button>
+            <button routerLink="/dashboard/ropero" mat-raised-button color="basic" style="width: 120px; height: 50px">
+              Cancelar
+            </button>
+          </div>
+        </mat-card-actions>
+      </form>
+    </div>
   </mat-card>
 </div>
