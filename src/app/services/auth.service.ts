@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from './user';
+import { User } from '../interfaces/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
@@ -14,6 +14,7 @@ export class AuthService {
   endpoint: string = 'http://34.83.143.73:8850';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
+  data = {};
 
   constructor(private http: HttpClient, public router: Router) {}
 
@@ -61,5 +62,10 @@ export class AuthService {
       msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(msg);
+  }
+
+  getCategories() {
+    return this.data = this.http
+      .get('http://34.83.143.73:8850/categories')
   }
 }
