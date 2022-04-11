@@ -1,8 +1,12 @@
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.carta {
   text-align: center;
+}
+
+.contenido {
+  margin-left: 5%;
+}
+
+.botones {
+  display: inline-block;
+  margin-left: 4%;
 }

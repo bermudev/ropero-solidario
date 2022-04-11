@@ -5,6 +5,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
 import { ConfiguracionComponent } from './configuracion/configuracion.component';
 import { DashboardComponent } from './dashboard.component';
 import { PapeleraComponent } from './papelera/papelera.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 import { RoperoComponent } from './ropero/ropero.component';
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'edit/:id', component: AddItemComponent },
       { path: 'categorias', component: CategoriasComponent },
       { path: 'papelera', component: PapeleraComponent },
+      { path: 'pedidos', component: PedidosComponent },
     ],
   },
 ];

@@ -10,6 +10,7 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { DialogComponent } from './ropero/dialog/dialog.component';
 import { PapeleraComponent } from './papelera/papelera.component';
 import { CategoriasComponent } from './categorias/categorias.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CategoriasComponent } from './categorias/categorias.component';
     DialogComponent,
     PapeleraComponent,
     CategoriasComponent,
+    PedidosComponent,
   ],
   imports: [
     CommonModule,
