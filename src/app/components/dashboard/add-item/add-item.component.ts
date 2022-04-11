@@ -34,7 +34,24 @@ export class AddItemComponent implements OnInit {
     this.idItem = this.aRoute.snapshot.params[idParam];
   }
 
+  isMobile = false;
+  getIsMobile(): boolean {
+    const w = document.documentElement.clientWidth;
+    const breakpoint = 991;
+
+    if (w < breakpoint) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   ngOnInit(): void {
+    this.isMobile = this.getIsMobile();
+    window.onresize = () => {
+      this.isMobile = this.getIsMobile();
+    };
+
     if (this.idItem !== undefined) {
       this.action = 'Editar';
       this.checkEdit();
