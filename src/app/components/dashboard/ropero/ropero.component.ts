@@ -4,13 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ItemsService } from 'src/app/services/items.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
-
-export interface ObjectsList {
-  id: number;
-  nombre: string;
-  categoria: string;
-  cantidad: number;
-}
+import { Item } from 'src/app/interfaces/item';
 
 @Component({
   selector: 'app-ropero',
@@ -19,7 +13,7 @@ export interface ObjectsList {
 })
 export class RoperoComponent implements AfterViewInit {
   // creamos una variable de elementos vacía
-  ELEMENT_DATA: ObjectsList[] = [];
+  ELEMENT_DATA: Item[] = [];
 
   displayedColumns: string[] = ['id', 'nombre', 'categoria', 'acciones'];
   dataSource!: MatTableDataSource<any>;

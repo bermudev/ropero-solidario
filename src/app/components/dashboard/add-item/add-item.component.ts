@@ -24,7 +24,7 @@ export class AddItemComponent implements OnInit {
   ) {
     this.form = this.fb.group({
       nombre: ['', Validators.required],
-      categoria: ['', Validators.required],
+      categoria: [0, Validators.required],
       cantidad: ['', Validators.required],
     });
 
@@ -61,9 +61,9 @@ export class AddItemComponent implements OnInit {
   actOnItem() {
     const item: Item = {
       id: this.idItem,
-      nombre: this.form.value.nombre,
-      categoria: this.form.value.categoria,
-      cantidad: this.form.value.cantidad,
+      name: this.form.value.nombre,
+      category: this.form.value.categoria,
+      amount: this.form.value.cantidad,
     };
 
     // preguntamos si es agregar o editar
@@ -92,10 +92,11 @@ export class AddItemComponent implements OnInit {
 
   checkEdit() {
     const item: Item = this._itemService.getSingleItem(this.idItem);
+
     this.form.patchValue({
-      nombre: item.nombre,
-      categoria: item.categoria,
-      cantidad: item.cantidad,
+      nombre: item.name,
+      categoria: item.category,
+      cantidad: item.amount,
     });
   }
 }

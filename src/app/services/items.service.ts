@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ObjectsList } from '../components/dashboard/ropero/ropero.component';
 import { Item } from '../interfaces/item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
-  ELEMENT_DATA: ObjectsList[] = [
-    { id: 0, nombre: 'Chaleco', categoria: 'Invierno', cantidad: 2 },
-    { id: 1, nombre: 'Pantalón', categoria: 'Primavera', cantidad: 4 },
-    { id: 2, nombre: 'Camiseta', categoria: 'Verano', cantidad: 6 },
+
+  ELEMENT_DATA: Item[] = [
+    { id: 0, name: 'Chaleco', category: 1, amount: 2 },
+    { id: 1, name: 'Pantalón', category: 2, amount: 4 },
+    { id: 2, name: 'Camiseta', category: 3, amount: 6 },
   ];
 
   constructor(private _snackBar: MatSnackBar) {}
@@ -45,8 +45,8 @@ export class ItemsService {
   }
 
   editarItem(item: Item, idItem: number) {
-    this.ELEMENT_DATA[idItem].nombre = item.nombre;
-    this.ELEMENT_DATA[idItem].categoria = item.categoria;
-    this.ELEMENT_DATA[idItem].cantidad = item.cantidad;
+    this.ELEMENT_DATA[idItem].name = item.name;
+    this.ELEMENT_DATA[idItem].category = item.category;
+    this.ELEMENT_DATA[idItem].amount = item.amount;
   }
 }
