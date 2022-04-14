@@ -9,10 +9,13 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Item } from '../interfaces/item';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  endpoint: string = 'http://34.83.143.73:8850';
+  // cargamos la URL desde las variables de environment, asi cambia segun sea la build de dev o pro
+  endpoint: string = environment.API_BASE_URL;
+
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   data = {};
@@ -84,9 +87,8 @@ export class AuthService {
   postItem(ELEMENT: Item) {
     // le tenemos que quitar el id pero hay que cambiar y poner el id opcional en la interfaz primero
     delete ELEMENT.id;
-    console.log(ELEMENT);
-    
-
-    this.data = this.http.post<Item>(`${this.endpoint}/items/`, ELEMENT).subscribe();
+    this.data = this.http
+      .post<Item>(`${this.endpoint}/items`, ELEMENT)
+      .subscribe();
   }
 }
