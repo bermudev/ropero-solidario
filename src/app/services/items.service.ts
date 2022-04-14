@@ -1,52 +1,45 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Item } from '../interfaces/item';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ItemsService {
+  ELEMENT: Item[] = [];
 
-  ELEMENT_DATA: Item[] = [
-    { id: 0, name: 'Chaleco', category: 1, amount: 2 },
-    { id: 1, name: 'Pantalón', category: 2, amount: 4 },
-    { id: 2, name: 'Camiseta', category: 3, amount: 6 },
-  ];
-
-  constructor(private _snackBar: MatSnackBar) {}
-
-  // devolvemos en los otros ts el elemento con los datos
-  getItems() {
-    return this.ELEMENT_DATA.slice();
-  }
+  constructor(
+    private _snackBar: MatSnackBar,
+    private authService: AuthService
+  ) {}
 
   // eliminamos el item con splice que elimina por posicion, habria que cambiar para que elimine segun el id que se le pase
   // buscar el indice segun el id enviado y eliminar ese indice?
   // https://bobbyhadz.com/blog/javascript-remove-object-from-array-by-value
-  eliminarItem(index: number) {
-    const indexOfObject = this.ELEMENT_DATA.findIndex((object) => {
-      return object.id === index;
-    });
+  eliminarItem(ELEMENT: Item) {
+    const indexOfObject = ELEMENT['id'];
 
     //aqui realmente se haría el query http
-    this.ELEMENT_DATA.splice(indexOfObject, 1);
+    //this.ELEMENT.splice(indexOfObject, 1);
+    this.authService.delItem(indexOfObject!);
+
     this._snackBar.open('Objeto eliminado correctamente', '', {
       duration: 5000,
     });
   }
 
-  agregarItem(item: Item) {
-    item.id = this.ELEMENT_DATA.length + 1;
-    this.ELEMENT_DATA.unshift(item);
+  agregarItem(ELEMENT: Item) {
+    this.authService.postItem(ELEMENT);
   }
 
   getSingleItem(index: number) {
-    return this.ELEMENT_DATA[index];
+    return this.ELEMENT[index];
   }
 
   editarItem(item: Item, idItem: number) {
-    this.ELEMENT_DATA[idItem].name = item.name;
-    this.ELEMENT_DATA[idItem].category = item.category;
-    this.ELEMENT_DATA[idItem].amount = item.amount;
+    this.ELEMENT[idItem].name = item.name;
+    this.ELEMENT[idItem].category = item.category;
+    this.ELEMENT[idItem].amount = item.amount;
   }
 }
