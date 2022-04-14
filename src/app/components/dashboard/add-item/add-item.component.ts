@@ -59,7 +59,7 @@ export class AddItemComponent implements OnInit {
   }
 
   actOnItem() {
-    const item: Item = {
+    const ELEMENT: Item = {
       id: this.idItem,
       name: this.form.value.nombre,
       category: this.form.value.categoria,
@@ -68,22 +68,24 @@ export class AddItemComponent implements OnInit {
 
     // preguntamos si es agregar o editar
     if (this.idItem !== undefined) {
-      this.editItem(item);
+      this.editItem(ELEMENT);
     } else {
-      this.addItem(item);
+      this.addItem(ELEMENT);
     }
   }
 
   editItem(item: Item) {
-    this._itemService.editarItem(item, item.id);
+    this._itemService.editarItem(item, item.id!);
+    
     this._snackBar.open('Objeto editado correctamente', '', {
       duration: 5000,
     });
     this.router.navigate(['/dashboard']);
   }
 
-  addItem(item: Item) {
-    this._itemService.agregarItem(item);
+  addItem(ELEMENT: Item) {
+    this._itemService.agregarItem(ELEMENT);
+
     this._snackBar.open('Objeto agregado correctamente', '', {
       duration: 5000,
     });

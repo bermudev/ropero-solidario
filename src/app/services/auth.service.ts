@@ -8,8 +8,9 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Item } from '../interfaces/item';
 
-@Injectable({providedIn: 'root',})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
   endpoint: string = 'http://34.83.143.73:8850';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -30,7 +31,7 @@ export class AuthService {
       .post<any>(`${this.endpoint}/auth`, user)
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
-        
+
         this.router.navigate(['dashboard']);
       });
   }
@@ -64,8 +65,28 @@ export class AuthService {
     return throwError(msg);
   }
 
+  // EMPIEZAN LAS LLAMADAS A LA API
+
+  // CATEGORIAS
   getCategories() {
-    return this.data = this.http
-      .get('http://34.83.143.73:8850/categories')
+    return (this.data = this.http.get(`${this.endpoint}/categories`));
+  }
+
+  // ITEMS
+  getItems(): Observable<Item[]> {
+    return (this.data = this.http.get<Item[]>(`${this.endpoint}/items`));
+  }
+
+  delItem(ID: number) {
+    this.data = this.http.delete(`${this.endpoint}/items/${ID}`).subscribe();
+  }
+
+  postItem(ELEMENT: Item) {
+    // le tenemos que quitar el id pero hay que cambiar y poner el id opcional en la interfaz primero
+    delete ELEMENT.id;
+    console.log(ELEMENT);
+    
+
+    this.data = this.http.post<Item>(`${this.endpoint}/items/`, ELEMENT).subscribe();
   }
 }
