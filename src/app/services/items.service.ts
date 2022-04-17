@@ -34,8 +34,8 @@ export class ItemsService {
   }
 
   // ! Arreglar esto para que haga la query al item desde auth.service y lo devuelva
-  getSingleItem(index: number) {
-    return this.ELEMENT[index];
+  obtenerItem(index: number) {
+    return this.authService.getSingleItem(index);
   }
 
   editarItem(item: Item, idItem: number) {

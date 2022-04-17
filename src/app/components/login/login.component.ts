@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -15,8 +13,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     public authService: AuthService,
-    private router: Router,
-    private _snackBar: MatSnackBar
   ) {
     this.form = this.fb.group({
       email: ['', Validators.required],
@@ -28,13 +24,5 @@ export class LoginComponent implements OnInit {
     this.authService.signIn(this.form.value);
   }
 
-  showError() {
-    this._snackBar.open('Usuario o contraseña incorrectos', '', {
-      duration: 5000,
-      horizontalPosition: 'center',
-      verticalPosition: 'bottom',
-    });
-  }
-
-  ngOnInit(): void {}
+   ngOnInit(): void {}
 }
