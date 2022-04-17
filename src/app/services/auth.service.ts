@@ -80,6 +80,14 @@ export class AuthService {
     return (this.data = this.http.get<Item[]>(`${this.endpoint}/items`));
   }
 
+  // TODO: acabar de hacer esto, esperar a que adri haga el enpdoint para obtener un inico item
+  getSingleItem(){
+    const items = this.getItems()
+
+    console.log(items);
+    
+  }
+
   delItem(ID: number) {
     this.data = this.http.delete(`${this.endpoint}/items/${ID}`).subscribe();
   }
