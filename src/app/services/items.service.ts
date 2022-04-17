@@ -33,6 +33,7 @@ export class ItemsService {
     this.authService.postItem(ELEMENT);
   }
 
+  // ! Arreglar esto para que haga la query al item desde auth.service y lo devuelva
   getSingleItem(index: number) {
     return this.ELEMENT[index];
   }
