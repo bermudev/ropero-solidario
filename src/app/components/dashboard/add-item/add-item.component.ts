@@ -93,7 +93,7 @@ export class AddItemComponent implements OnInit {
   }
 
   checkEdit() {
-    const item: Item = this._itemService.getSingleItem(this.idItem);
+    const item: Item = this._itemService.obtenerItem(this.idItem);
 
     this.form.patchValue({
       nombre: item.name,

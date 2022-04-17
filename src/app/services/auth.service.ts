@@ -1,15 +1,11 @@
 import { Injectable } from '@angular/core';
 import { User } from '../interfaces/user';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpErrorResponse,
-} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Item } from '../interfaces/item';
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,24 +15,35 @@ export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
   currentUser = {};
   data = {};
+  loginError = false;
 
-  constructor(private http: HttpClient, public router: Router) {}
-
-  // Sign-up
-  signUp(user: User): Observable<any> {
-    let api = `${this.endpoint}/register-user`;
-    return this.http.post(api, user).pipe(catchError(this.handleError));
-  }
+  constructor(
+    private http: HttpClient,
+    public router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
 
   // Sign-in
   signIn(user: User) {
-    return this.http
-      .post<any>(`${this.endpoint}/auth`, user)
-      .subscribe((res: any) => {
+    return this.http.post<any>(`${this.endpoint}/auth`, user).subscribe(
+      (res: any) => {
+        //Success
         localStorage.setItem('access_token', res.token);
-
         this.router.navigate(['dashboard']);
-      });
+      },
+      (error) => {
+        //Error callback
+        //console.log(error);
+        //console.error('error caught in component');
+
+        // Creo que idealmente esto deberia estar en login.component.ts pero no se como pasarle la informacion del error desde aqui
+        this._snackBar.open('Usuario o contraseña incorrectos', '', {
+          duration: 5000,
+          horizontalPosition: 'center',
+          verticalPosition: 'bottom',
+        });
+      }
+    );
   }
 
   getToken() {
@@ -55,19 +62,6 @@ export class AuthService {
     }
   }
 
-  // Error
-  handleError(error: HttpErrorResponse) {
-    let msg = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      msg = error.error.message;
-    } else {
-      // server-side error
-      msg = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    return throwError(msg);
-  }
-
   // EMPIEZAN LAS LLAMADAS A LA API
 
   // CATEGORIAS
@@ -81,11 +75,8 @@ export class AuthService {
   }
 
   // TODO: acabar de hacer esto, esperar a que adri haga el enpdoint para obtener un inico item
-  getSingleItem(){
-    const items = this.getItems()
-
-    console.log(items);
-    
+  getSingleItem(ID: number) {
+    // return (this.data = this.http.get<Item[]>(`${this.endpoint}/items/${ID}`))
   }
 
   delItem(ID: number) {
