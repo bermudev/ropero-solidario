@@ -63,7 +63,7 @@ export class RoperoComponent implements AfterViewInit {
   openDialog(ELEMENT: Item) {
     // justo en esa linea de debajo es donde se le puede pasar argumentos tengo entendido
     const dialogRef = this.dialog.open(DialogComponent, {
-      data: ELEMENT.id,
+      data: ELEMENT,
     });
 
     // aqui leemos el resultado de la ejecucion del dialog
