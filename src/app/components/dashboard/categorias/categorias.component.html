@@ -3,8 +3,47 @@
     <span>Categorías</span>
   </mat-toolbar>
 
-  <mat-card class="centered">
-  
+  <mat-card class="main-card">
+    <div class="contenedor wrap">
+
+      <div class="item lista-categorias">
+        <mat-card-title>Editar categorías:</mat-card-title>
+        <br />
+        <mat-chip-list aria-label="Lista de categorías">
+          <mat-chip color="accent" selected *ngFor="let item of names">{{item}}</mat-chip>
+        </mat-chip-list>
+      </div>
+
+      <div class="item lista-acciones">
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+          <mat-label>Añadir categoría</mat-label>
+          <input matInput type="string" [(ngModel)]="selectedAddCategory">
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="addCategoryClick()">Añadir</button>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+          <mat-label>Eliminar categoría</mat-label>
+          <mat-select [(value)]="selectedDelCategory" disableRipple>
+            <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="delCategoryClick()">Eliminar</button>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+          <mat-label>Seleccionar categoría</mat-label>
+          <mat-select [(value)]="selectedEditCategory" disableRipple>
+            <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
+          <mat-label>Nuevo nombre de categoría</mat-label>
+          <input matInput type="string" [(ngModel)]="selectedEditNewCategory">
+        </mat-form-field>
+        <button mat-stroked-button color="primary" (click)="editCategoryClick()">Editar</button>
+
+      </div>
+    </div>
   </mat-card>
 </div>
 

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +19,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [],
@@ -39,6 +42,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCardModule,
     MatListModule,
     MatGridListModule,
+    MatChipsModule,
+    MatSelectModule,
+    FormsModule,
   ],
   exports: [
     CommonModule,
@@ -58,6 +64,9 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatCardModule,
     MatListModule,
     MatGridListModule,
+    MatChipsModule,
+    MatSelectModule,
+    FormsModule,
   ],
 })
 export class SharedModule {}

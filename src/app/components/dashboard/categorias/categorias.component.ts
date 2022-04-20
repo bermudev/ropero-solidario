@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Category } from 'src/app/interfaces/category';
 import { AuthService } from 'src/app/services/auth.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-categorias',
@@ -9,36 +9,55 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./categorias.component.css'],
 })
 export class CategoriasComponent implements OnInit {
-  private baseUrl = environment.API_BASE_URL;
+  data: Category[] = [];
+  names: string[] = [];
 
-  data = {};
-  constructor(
-    private httpClient: HttpClient,
-    private authService: AuthService
-  ) {}
+  selectedAddCategory: string = ""
+  selectedDelCategory: string = ""
+  selectedEditCategory: string = ""
+  selectedEditNewCategory: string = ""
+
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
-    this.authService.getCategories().subscribe((data) => (this.data = data))
+    this.authService.getCategories().subscribe((data) => {
+      // hacemos que el json pase a string
+      this.data = JSON.parse(JSON.stringify(data));
+
+      // extraemos los valores de los names mediante el metodo .map()
+      this.names = this.data.map((d) => d.name);
+
+      // los ordenamos para que quede más bonito
+      const sort = (str: string[]): string =>
+        str.sort((a, b) => a.localeCompare(b)).join('');
+
+      sort(this.names);
+    });
   }
 
-  // solo para testing
-  headerOutside() {
-    this.httpClient
-      .get(`${this.baseUrl}/categories`)
-      .subscribe((data) => (this.data = data));
+  isMobile = false;
+  getIsMobile(): boolean {
+    const w = document.documentElement.clientWidth;
+    const breakpoint = 991;
+
+    if (w < breakpoint) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  // solo para testing
-  headerInside() {
-    const token = localStorage.getItem('access_token'); // Will return if it is not set
-    let httpOptions = {
-      headers: new HttpHeaders({
-        Authorization: `Bearer ${token}`,
-      }),
-    };
+  addCategoryClick() {
+    console.log(`Agregar categoria ${this.selectedAddCategory}`);
+  }
 
-    this.httpClient
-      .get(`${this.baseUrl}/categories`, httpOptions)
-      .subscribe((data) => (this.data = data));
+  delCategoryClick() {
+    console.log(`Eliminar categoria ${this.selectedDelCategory}`);
+  }
+
+  editCategoryClick() {
+    console.log(`Editar categoria ${this.selectedEditCategory}`);
+    console.log(`Nueva categoria ${this.selectedEditNewCategory}`);
   }
 }

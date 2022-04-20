@@ -1,0 +1,31 @@
+.main-card {
+  text-align: center;
+}
+
+.contenedor {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.wrap {
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.item {
+  max-width: 400px;
+}
+
+.lista-categorias {
+}
+
+.lista-acciones {
+  text-align: left;
+}
+
+/* 
+https://www.delftstack.com/es/howto/css/resize-image-css/ 
+https://sharkcoder.com/layout/flexbox
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+*/
