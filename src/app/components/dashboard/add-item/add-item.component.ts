@@ -93,12 +93,12 @@ export class AddItemComponent implements OnInit {
   }
 
   checkEdit() {
-    const item: Item = this._itemService.obtenerItem(this.idItem);
+    //const item: Item = this._itemService.obtenerItem(this.idItem);
 
-    this.form.patchValue({
-      nombre: item.name,
-      categoria: item.category,
-      cantidad: item.amount,
-    });
+    //this.form.patchValue({
+    //  nombre: item.name,
+    //  categoria: item.category,
+    //  cantidad: item.amount,
+    //});
   }
 }
