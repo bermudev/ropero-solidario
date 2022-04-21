@@ -75,8 +75,8 @@ export class AddItemComponent implements OnInit {
   }
 
   editItem(item: Item) {
-    this._itemService.editarItem(item, item.id!);
-    
+    this._itemService.editarItem(item);
+
     this._snackBar.open('Objeto editado correctamente', '', {
       duration: 5000,
     });
@@ -93,12 +93,18 @@ export class AddItemComponent implements OnInit {
   }
 
   checkEdit() {
-    //const item: Item = this._itemService.obtenerItem(this.idItem);
+    // Primero hago la query para que me de los datos del item que quiero editar segun el id
+    let itemToEdit: Item;
+    this._itemService.obtenerItem(this.idItem).subscribe((data) => {
+      itemToEdit = JSON.parse(JSON.stringify(data));
+      //console.log(itemToEdit);
 
-    //this.form.patchValue({
-    //  nombre: item.name,
-    //  categoria: item.category,
-    //  cantidad: item.amount,
-    //});
+      // meto en la pantalla de edit los datos del objeto en los campos correspondiente
+      this.form.patchValue({
+        nombre: itemToEdit.name,
+        categoria: itemToEdit.category,
+        cantidad: itemToEdit.amount,
+      });
+    });
   }
 }

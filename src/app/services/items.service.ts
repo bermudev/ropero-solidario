@@ -38,9 +38,7 @@ export class ItemsService {
     return this.authService.getSingleItem(index);
   }
 
-  editarItem(item: Item, idItem: number) {
-    this.ELEMENT[idItem].name = item.name;
-    this.ELEMENT[idItem].category = item.category;
-    this.ELEMENT[idItem].amount = item.amount;
+  editarItem(item: Item) {
+    this.authService.postEditedItem(item)
   }
 }
