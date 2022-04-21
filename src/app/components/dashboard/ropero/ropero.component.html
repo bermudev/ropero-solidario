@@ -7,23 +7,19 @@
 
   <mat-form-field appearance="standard" class="filtro">
     <mat-label>Filter</mat-label>
-    <input
-      matInput
-      (keyup)="applyFilter($event)"
-      placeholder="Ex. ium"
-      #input
-    />
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input />
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z1">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
-    <!-- Position Column -->
+    <!-- ID Column
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>Id.</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
+    </ng-container> 
+    -->
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
@@ -31,10 +27,16 @@
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
+    <!-- Category Column -->
     <ng-container matColumnDef="category">
       <th mat-header-cell *matHeaderCellDef>Categoría</th>
       <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef>Cantidad</th>
+      <td mat-cell *matCellDef="let element">{{ element.amount }}</td>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
@@ -60,11 +62,7 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator
-    class="mat-elevation-z1"
-    [pageSizeOptions]="[5, 10, 20]"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
+  <mat-paginator class="mat-elevation-z1" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons
+    aria-label="Select page of periodic elements">
   </mat-paginator>
 </div>

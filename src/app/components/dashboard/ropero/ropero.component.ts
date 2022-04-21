@@ -16,7 +16,7 @@ export class RoperoComponent implements AfterViewInit {
   // creamos una variable de elementos vacía
   ELEMENTS_DATA: Item[] = [];
 
-  displayedColumns: string[] = ['id', 'name', 'category', 'acciones'];
+  displayedColumns: string[] = ['name', 'category', "amount", 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
