@@ -74,9 +74,8 @@ export class AuthService {
     return (this.data = this.http.get<Item[]>(`${this.endpoint}/items`));
   }
 
-  // TODO: acabar de hacer esto, esperar a que adri haga el enpdoint para obtener un inico item
   getSingleItem(ID: number) {
-    // return (this.data = this.http.get<Item[]>(`${this.endpoint}/items/${ID}`))
+    return (this.data = this.http.get<Item[]>(`${this.endpoint}/items/${ID}`))
   }
 
   delItem(ID: number) {
@@ -88,6 +87,18 @@ export class AuthService {
     delete ELEMENT.id;
     this.data = this.http
       .post<Item>(`${this.endpoint}/items`, ELEMENT)
+      .subscribe();
+  }
+
+  postEditedItem(ELEMENT: Item) {
+    // le tenemos que quitar el id pero hay que cambiar y poner el id opcional en la interfaz primero
+    const idItem = ELEMENT.id
+    delete ELEMENT.id;
+    console.log(idItem);
+    console.log(ELEMENT);
+    
+    this.data = this.http
+      .put<Item>(`${this.endpoint}/items/${idItem}`, ELEMENT)
       .subscribe();
   }
 }
