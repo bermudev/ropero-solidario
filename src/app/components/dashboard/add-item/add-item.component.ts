@@ -80,7 +80,7 @@ export class AddItemComponent implements OnInit {
     this._snackBar.open('Objeto editado correctamente', '', {
       duration: 5000,
     });
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/ropero']);
   }
 
   addItem(ELEMENT: Item) {
@@ -89,7 +89,7 @@ export class AddItemComponent implements OnInit {
     this._snackBar.open('Objeto agregado correctamente', '', {
       duration: 5000,
     });
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/dashboard/ropero']);
   }
 
   checkEdit() {
