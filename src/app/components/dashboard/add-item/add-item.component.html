@@ -11,19 +11,21 @@
         <form class="example-form" [formGroup]="form" (ngSubmit)="actOnItem()">
           <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
             <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre">
+            <input matInput autocomplete="off" formControlName="nombre">
           </mat-form-field>
 
           <p>
             <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
               <mat-label>Categoría</mat-label>
-              <input matInput type="number" formControlName="categoria">
+              <mat-select [(value)]="selectedCategory" disableRipple>
+                <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
+              </mat-select>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
               <mat-label>Cantidad</mat-label>
-              <input matInput type="number" formControlName="cantidad" />
+              <input matInput type="number" autocomplete="off" formControlName="cantidad" />
             </mat-form-field>
           </p>
           <mat-card-actions>

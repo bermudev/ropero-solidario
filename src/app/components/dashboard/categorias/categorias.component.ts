@@ -9,8 +9,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./categorias.component.css'],
 })
 export class CategoriasComponent implements OnInit {
-  data: Category[] = [];
-  names: string[] = [];
+  categoriesList: Category[] = [];
+  categoriesNames: string[] = [];
   isMobile = false;
 
   selectedAddCategory: string = '';
@@ -21,22 +21,22 @@ export class CategoriasComponent implements OnInit {
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
-    this.loadFromAPI();
+    this.loadCatFromAPI();
   }
 
-  loadFromAPI() {
+  loadCatFromAPI() {
     this.authService.getCategories().subscribe((data) => {
       // hacemos que el json pase a string
-      this.data = JSON.parse(JSON.stringify(data));
+      this.categoriesList = JSON.parse(JSON.stringify(data));
 
       // extraemos los valores de los names mediante el metodo .map()
-      this.names = this.data.map((d) => d.name);
+      this.categoriesNames = this.categoriesList.map((d) => d.name);
 
       // los ordenamos para que quede más bonito
       const sort = (str: string[]): string =>
         str.sort((a, b) => a.localeCompare(b)).join('');
 
-      sort(this.names);
+      sort(this.categoriesNames);
     });
   }
 
@@ -59,20 +59,20 @@ export class CategoriasComponent implements OnInit {
     };
 
     this.authService.addCategorie(category);
-    this.loadFromAPI()
+    this.loadCatFromAPI()
   }
 
   delCategoryClick() {
     //console.log(`Eliminar categoria ${this.selectedDelCategory}`);
 
-    const category = this.data.find((d) => d.name === this.selectedDelCategory);
+    const category = this.categoriesList.find((d) => d.name === this.selectedDelCategory);
     
     // necesito extraer el id buscando en el objeto por el nombre del data
     // console.log(idCategory?.id);
 
     // le pongo el ! al final para decirle que no es undefined, el signo de interrogacion la verdad que no lo se
     this.authService.deleteCategorie(category?.id!)
-    this.loadFromAPI()
+    this.loadCatFromAPI()
   }
 
   editCategoryClick() {
@@ -80,7 +80,7 @@ export class CategoriasComponent implements OnInit {
     //console.log(`Nueva categoria ${this.selectedEditNewCategory}`);
 
     // las dos interrogaciones es para decirles que ambos va a tener typo y no seran undefined (no se si es buena practica)
-    const oldCategoryID = this.data.find((d) => d.name === this.selectedEditCategory)!.id!;
+    const oldCategoryID = this.categoriesList.find((d) => d.name === this.selectedEditCategory)!.id!;
     
     const category: Category = {
       name: this.selectedEditNewCategory,
@@ -89,6 +89,6 @@ export class CategoriasComponent implements OnInit {
     // le mandamos el name de selectedEditNewCategory y el id del selectedEditCategory
     this.authService.editCategorie(category, oldCategoryID)
 
-    this.loadFromAPI()
+    this.loadCatFromAPI()
   }
 }
