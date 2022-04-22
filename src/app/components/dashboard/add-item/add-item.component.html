@@ -17,7 +17,7 @@
           <p>
             <mat-form-field class="example-full-width" appearance="fill" style="width: 300px">
               <mat-label>Categoría</mat-label>
-              <mat-select [(value)]="selectedCategory" disableRipple>
+              <mat-select [(value)]="selectedCategory" disableRipple formControlName="categoria">
                 <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
               </mat-select>
             </mat-form-field>
