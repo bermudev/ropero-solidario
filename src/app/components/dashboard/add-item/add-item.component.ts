@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/app/interfaces/category';
 import { Item } from 'src/app/interfaces/item';
+import { AuthService } from 'src/app/services/auth.service';
 import { ItemsService } from 'src/app/services/items.service';
 
 @Component({
@@ -15,16 +17,21 @@ export class AddItemComponent implements OnInit {
   idItem: any;
   action = 'Agregar';
 
+  categoriesList: Category[] = [];
+  names: string[] = [];
+  selectedCategory: string = '';
+
   constructor(
     private fb: FormBuilder,
     private _itemService: ItemsService,
     private _snackBar: MatSnackBar,
     private router: Router,
-    private aRoute: ActivatedRoute
+    private aRoute: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.form = this.fb.group({
       nombre: ['', Validators.required],
-      categoria: [0, Validators.required],
+      categoria: ['', Validators.required],
       cantidad: ['', Validators.required],
     });
 
@@ -32,6 +39,23 @@ export class AddItemComponent implements OnInit {
     // si es crear idItem es undefined y si es editar es un numero
     const idParam = 'id';
     this.idItem = this.aRoute.snapshot.params[idParam];
+  }
+
+  // quizas hay que hacerlo de una manera en la que no se copie de nuevo toda la funcion de categorias.component.ts
+  loadCatFromAPI() {
+    this.authService.getCategories().subscribe((data) => {
+      // hacemos que el json pase a string
+      this.categoriesList = JSON.parse(JSON.stringify(data));
+   
+      // extraemos los valores de los names mediante el metodo .map()
+      this.names = this.categoriesList.map((d) => d.name);
+
+      // los ordenamos para que quede más bonito
+      const sort = (str: string[]): string =>
+        str.sort((a, b) => a.localeCompare(b)).join('');
+
+      sort(this.names);
+    });
   }
 
   isMobile = false;
@@ -47,6 +71,8 @@ export class AddItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadCatFromAPI()
+
     this.isMobile = this.getIsMobile();
     window.onresize = () => {
       this.isMobile = this.getIsMobile();
@@ -59,10 +85,13 @@ export class AddItemComponent implements OnInit {
   }
 
   actOnItem() {
+    // asignar nombre de categoria tipo string con el id que le corresponda
+    const categoryID = this.categoriesList.find((d) => d.name === this.selectedCategory)!.id!;
+
     const ELEMENT: Item = {
       id: this.idItem,
       name: this.form.value.nombre,
-      category: this.form.value.categoria,
+      category: categoryID,
       amount: this.form.value.cantidad,
     };
 
@@ -95,14 +124,31 @@ export class AddItemComponent implements OnInit {
   checkEdit() {
     // Primero hago la query para que me de los datos del item que quiero editar segun el id
     let itemToEdit: Item;
+
     this._itemService.obtenerItem(this.idItem).subscribe((data) => {
       itemToEdit = JSON.parse(JSON.stringify(data));
-      //console.log(itemToEdit);
 
+      console.log("Objeto del item:");
+      console.log(itemToEdit);
+
+      // Se extrae desde el id de categoria el nombre de categoria
+      // TODO: aqui ocurren varias cosas: a veces no encuentra el nombre, cuando no lo encuentra el boton no se activa,
+      // cuando lo encuentra no lo pone en el form
+      console.log("Lista de categorías cargada: ");
+      console.log(this.categoriesList);
+      
+      const category = this.categoriesList.find((d) => d.id == itemToEdit.category)!;
+
+      console.log("Nombre de la categoria del item:");
+      console.log(category);
+      
       // meto en la pantalla de edit los datos del objeto en los campos correspondiente
+      if (category != undefined){
+        this.selectedCategory = category.name;
+      } 
+      
       this.form.patchValue({
         nombre: itemToEdit.name,
-        categoria: itemToEdit.category,
         cantidad: itemToEdit.amount,
       });
     });

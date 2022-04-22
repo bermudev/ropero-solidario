@@ -11,7 +11,7 @@
         <mat-card-title>Editar categorías:</mat-card-title>
         <br />
         <mat-chip-list aria-label="Lista de categorías">
-          <mat-chip color="accent" selected *ngFor="let item of names">{{item}}</mat-chip>
+          <mat-chip color="accent" selected *ngFor="let item of categoriesNames">{{item}}</mat-chip>
         </mat-chip-list>
       </div>
 
@@ -28,7 +28,7 @@
         <mat-form-field class="example-full-width" appearance="fill" style="width: 220px">
           <mat-label>Eliminar categoría</mat-label>
           <mat-select [(value)]="selectedDelCategory" disableRipple>
-            <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
+            <mat-option value="{{item}}" *ngFor="let item of categoriesNames">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
         <button mat-stroked-button color="primary" (click)="delCategoryClick()">Eliminar</button>
@@ -36,7 +36,7 @@
         <mat-form-field class="example-full-width" appearance="fill" style="width: 220px">
           <mat-label>Seleccionar categoría</mat-label>
           <mat-select [(value)]="selectedEditCategory" disableRipple>
-            <mat-option value="{{item}}" *ngFor="let item of names">{{item}}</mat-option>
+            <mat-option value="{{item}}" *ngFor="let item of categoriesNames">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -51,4 +51,4 @@
   </mat-card>
 </div>
 
-<pre>{{ data | json }}</pre>
+<pre>{{ categoriesList | json }}</pre>
