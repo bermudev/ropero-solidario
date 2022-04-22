@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Item } from '../interfaces/item';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Category } from '../interfaces/category';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -69,13 +70,32 @@ export class AuthService {
     return (this.data = this.http.get(`${this.endpoint}/categories`));
   }
 
+  // ok
+  addCategorie(category: Category) {
+    this.data = this.http
+      .post<Item>(`${this.endpoint}/categories`, category)
+      .subscribe();
+  }
+
+  // ok
+  deleteCategorie(ID: number) {
+    this.data = this.http
+      .delete(`${this.endpoint}/categories/${ID}`).subscribe();
+  }
+
+  editCategorie(category: Category, oldCategoryID: number) {
+    this.data = this.http
+      .put<Item>(`${this.endpoint}/categories/${oldCategoryID}`, category)
+      .subscribe();
+  }
+
   // ITEMS
   getItems(): Observable<Item[]> {
     return (this.data = this.http.get<Item[]>(`${this.endpoint}/items`));
   }
 
   getSingleItem(ID: number) {
-    return (this.data = this.http.get<Item[]>(`${this.endpoint}/items/${ID}`))
+    return (this.data = this.http.get<Item[]>(`${this.endpoint}/items/${ID}`));
   }
 
   delItem(ID: number) {
@@ -92,11 +112,11 @@ export class AuthService {
 
   postEditedItem(ELEMENT: Item) {
     // le tenemos que quitar el id pero hay que cambiar y poner el id opcional en la interfaz primero
-    const idItem = ELEMENT.id
+    const idItem = ELEMENT.id;
     delete ELEMENT.id;
-    console.log(idItem);
-    console.log(ELEMENT);
-    
+    //console.log(idItem);
+    //console.log(ELEMENT);
+
     this.data = this.http
       .put<Item>(`${this.endpoint}/items/${idItem}`, ELEMENT)
       .subscribe();
