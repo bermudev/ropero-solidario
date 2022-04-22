@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CatnamePipe } from '../pipes/catname.pipe';
 
 // Angular Material
 import { MatButtonModule } from '@angular/material/button';
@@ -22,8 +23,11 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
 
+
 @NgModule({
-  declarations: [],
+  declarations: [
+    CatnamePipe,
+  ],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -67,6 +71,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatChipsModule,
     MatSelectModule,
     FormsModule,
+    CatnamePipe
   ],
 })
 export class SharedModule {}

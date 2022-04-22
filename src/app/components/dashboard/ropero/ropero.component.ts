@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 import { Item } from 'src/app/interfaces/item';
 import { AuthService } from 'src/app/services/auth.service';
+import { Category } from 'src/app/interfaces/category';
 
 @Component({
   selector: 'app-ropero',
@@ -13,11 +14,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./ropero.component.css'],
 })
 export class RoperoComponent implements AfterViewInit {
-  // creamos una variable de elementos vacía
   ELEMENTS_DATA: Item[] = [];
-
-  displayedColumns: string[] = ['name', 'category', "amount", 'acciones'];
+  displayedColumns: string[] = ['name', 'category', 'amount', 'acciones'];
   dataSource!: MatTableDataSource<any>;
+
+  categoriesList: Category[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -56,6 +57,10 @@ export class RoperoComponent implements AfterViewInit {
 
   // ejecutamos la funcion al inicio
   ngOnInit(): void {
+    this.authService.getCategories().subscribe((data) => {
+      this.categoriesList = JSON.parse(JSON.stringify(data));
+    });
+
     this.cargarItems();
     // this.authService.getItems().subscribe( result => console.log(result) )
   }
