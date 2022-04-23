@@ -23,7 +23,7 @@
           <mat-label>Añadir categoría</mat-label>
           <input matInput type="string" autocomplete="off" [(ngModel)]="selectedAddCategory">
         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="addCategoryClick()">Añadir</button>
+        <button mat-stroked-button color="primary" [disabled]="selectedAddCategory === ''" (click)="addCategoryClick()">Añadir</button>
 
         <mat-form-field class="example-full-width" appearance="fill" style="width: 220px">
           <mat-label>Eliminar categoría</mat-label>
@@ -31,7 +31,7 @@
             <mat-option value="{{item}}" *ngFor="let item of categoriesNames">{{item}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="delCategoryClick()">Eliminar</button>
+        <button mat-stroked-button color="primary" [disabled]="selectedDelCategory === ''" (click)="delCategoryClick()">Eliminar</button>
 
         <mat-form-field class="example-full-width" appearance="fill" style="width: 220px">
           <mat-label>Seleccionar categoría</mat-label>
@@ -44,11 +44,9 @@
           <mat-label>Nuevo nombre de categoría</mat-label>
           <input matInput type="string" autocomplete="off" [(ngModel)]="selectedEditNewCategory">
         </mat-form-field>
-        <button mat-stroked-button color="primary" (click)="editCategoryClick()">Editar</button>
+        <button mat-stroked-button color="primary" [disabled]="selectedEditCategory === '' || selectedEditNewCategory === ''" (click)="editCategoryClick()">Editar</button>
 
       </div>
     </div>
   </mat-card>
 </div>
-
-<pre>{{ categoriesList | json }}</pre>

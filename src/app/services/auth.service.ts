@@ -80,7 +80,8 @@ export class AuthService {
   // ok
   deleteCategorie(ID: number) {
     this.data = this.http
-      .delete(`${this.endpoint}/categories/${ID}`).subscribe();
+      .delete(`${this.endpoint}/categories/${ID}`)
+      .subscribe();
   }
 
   editCategorie(category: Category, oldCategoryID: number) {
@@ -121,4 +122,5 @@ export class AuthService {
       .put<Item>(`${this.endpoint}/items/${idItem}`, ELEMENT)
       .subscribe();
   }
+
 }
