@@ -15,9 +15,18 @@
 }
 
 .mat-sidenav-content {
-  height: 100vh;
+  height: 92vh;
 }
 
 .list-icons {
   margin-right: 15px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  height: 92vh;
+}
+.flex {
+  flex: 1;
 }
