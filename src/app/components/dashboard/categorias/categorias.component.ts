@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Category } from 'src/app/interfaces/category';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -18,7 +18,10 @@ export class CategoriasComponent implements OnInit {
   selectedEditCategory: string = '';
   selectedEditNewCategory: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.loadCatFromAPI();
@@ -59,20 +62,30 @@ export class CategoriasComponent implements OnInit {
     };
 
     this.authService.addCategorie(category);
-    this.loadCatFromAPI()
+
+    this.loadCatFromAPI();
+    this.selectedAddCategory = ""
+    this._snackBar.open('Categoría agregada correctamente', '', {
+      duration: 5000,
+    });
   }
 
   delCategoryClick() {
     //console.log(`Eliminar categoria ${this.selectedDelCategory}`);
 
-    const category = this.categoriesList.find((d) => d.name === this.selectedDelCategory);
-    
+    const category = this.categoriesList.find(
+      (d) => d.name === this.selectedDelCategory
+    );
+
     // necesito extraer el id buscando en el objeto por el nombre del data
     // console.log(idCategory?.id);
 
     // le pongo el ! al final para decirle que no es undefined, el signo de interrogacion la verdad que no lo se
-    this.authService.deleteCategorie(category?.id!)
-    this.loadCatFromAPI()
+    this.authService.deleteCategorie(category?.id!);
+    this.loadCatFromAPI();
+    this._snackBar.open('Categoría eliminada correctamente', '', {
+      duration: 5000,
+    });
   }
 
   editCategoryClick() {
@@ -80,15 +93,19 @@ export class CategoriasComponent implements OnInit {
     //console.log(`Nueva categoria ${this.selectedEditNewCategory}`);
 
     // las dos interrogaciones es para decirles que ambos va a tener typo y no seran undefined (no se si es buena practica)
-    const oldCategoryID = this.categoriesList.find((d) => d.name === this.selectedEditCategory)!.id!;
-    
+    const oldCategoryID = this.categoriesList.find(
+      (d) => d.name === this.selectedEditCategory
+    )!.id!;
+
     const category: Category = {
       name: this.selectedEditNewCategory,
     };
 
     // le mandamos el name de selectedEditNewCategory y el id del selectedEditCategory
-    this.authService.editCategorie(category, oldCategoryID)
-
-    this.loadCatFromAPI()
+    this.authService.editCategorie(category, oldCategoryID);
+    this.loadCatFromAPI();
+    this._snackBar.open('Categoría editada correctamente', '', {
+      duration: 5000,
+    });
   }
 }

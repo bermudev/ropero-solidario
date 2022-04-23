@@ -62,7 +62,6 @@ export class RoperoComponent implements AfterViewInit {
     });
 
     this.cargarItems();
-    // this.authService.getItems().subscribe( result => console.log(result) )
   }
 
   openDialog(ELEMENT: Item) {
