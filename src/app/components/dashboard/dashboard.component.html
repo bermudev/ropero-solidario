@@ -27,9 +27,13 @@
         <div class="flex"></div>
         <div>
           <a mat-list-item routerLink="/dashboard/configuracion"><span class="material-icons list-icons">settings</span>Configuración</a>
+          
         </div>
+        
         </div>
       </mat-nav-list>
+      <p class="api-check">API health: {{apiStatusCode}}</p>
+      <p>v1.0.0</p>
     </mat-sidenav>
 
     <mat-sidenav-content>
