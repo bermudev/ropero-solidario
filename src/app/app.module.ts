@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { SharedModule } from './components/shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/authconfig.interceptor';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent],
@@ -18,7 +17,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
-    FlexLayoutModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
