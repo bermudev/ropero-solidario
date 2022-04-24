@@ -45,14 +45,8 @@ export class RoperoComponent implements AfterViewInit {
     this.authService.getItems().subscribe((data) => {
       this.ELEMENTS_DATA = JSON.parse(JSON.stringify(data));
       this.dataSource = new MatTableDataSource(this.ELEMENTS_DATA);
-      //this.ELEMENT_DATA = {...data};
-      //this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-      //console.log(data);
-      //console.log(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
     });
-
-    this.dataSource = new MatTableDataSource(this.ELEMENTS_DATA);
-    //console.log(this.ELEMENT_DATA);
   }
 
   // ejecutamos la funcion al inicio

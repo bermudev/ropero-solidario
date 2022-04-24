@@ -128,20 +128,9 @@ export class AddItemComponent implements OnInit {
     this._itemService.obtenerItem(this.idItem).subscribe((data) => {
       itemToEdit = JSON.parse(JSON.stringify(data));
 
-      console.log("Objeto del item:");
-      console.log(itemToEdit);
-
       // Se extrae desde el id de categoria el nombre de categoria
-      // TODO: aqui ocurren varias cosas: a veces no encuentra el nombre, cuando no lo encuentra el boton no se activa,
-      // cuando lo encuentra no lo pone en el form
-      console.log("Lista de categorías cargada: ");
-      console.log(this.categoriesList);
-      
       const category = this.categoriesList.find((d) => d.id == itemToEdit.category)!;
 
-      console.log("Nombre de la categoria del item:");
-      console.log(category);
-      
       // meto en la pantalla de edit los datos del objeto en los campos correspondiente
       if (category != undefined){
         this.selectedCategory = category.name;
