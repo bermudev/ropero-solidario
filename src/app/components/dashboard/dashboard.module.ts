@@ -11,6 +11,7 @@ import { DialogComponent } from './ropero/dialog/dialog.component';
 import { PapeleraComponent } from './papelera/papelera.component';
 import { CategoriasComponent } from './categorias/categorias.component';
 import { PedidosComponent } from './pedidos/pedidos.component';
+import { DialogOrdersComponent } from './pedidos/dialog-orders/dialog-orders.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
     PapeleraComponent,
     CategoriasComponent,
     PedidosComponent,
+    DialogOrdersComponent,
   ],
   imports: [
     CommonModule,
