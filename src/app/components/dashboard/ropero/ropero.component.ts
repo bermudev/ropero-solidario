@@ -18,13 +18,13 @@ export class RoperoComponent implements AfterViewInit {
   displayedColumns: string[] = ['name', 'category', 'amount', 'acciones'];
   dataSource!: MatTableDataSource<any>;
 
+  // Needed for the categories pipe to work
   categoriesList: Category[] = [];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  // para el paginator, cosas de material
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    //this.dataSource.paginator = this.paginator;
   }
 
   // para el filtro, cosas de material
@@ -33,7 +33,6 @@ export class RoperoComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  // inyectamos el servicio
   constructor(
     private _itemsService: ItemsService,
     public dialog: MatDialog,
