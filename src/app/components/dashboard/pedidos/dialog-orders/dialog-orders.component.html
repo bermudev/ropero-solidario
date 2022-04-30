@@ -1,0 +1,8 @@
+<h2 mat-dialog-title style="text-align: center;">Eliminar objeto</h2>
+<mat-dialog-content class="mat-typography">
+  <p style="text-align: center;">¿Estás seguro de querer eliminar el objeto <b>{{data.name}}</b>?</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close (click)="cancel()">Cancelar</button>
+  <button mat-button color="warn" [mat-dialog-close]="true" cdkFocusInitial (click)="confirm()">Eliminar</button>
+</mat-dialog-actions>
